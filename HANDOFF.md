@@ -2,7 +2,7 @@
 
 Last updated: 2026-10-13.
 
-Local repository: `G:/Work Stuff/lead-crm-automation`, branch `feature/lead-crm-demo`. No remote or publication. The user selected HubSpot and authorized brainstorming, planning, and implementation.
+Repository: `lead-crm-automation`, branch `main`. GitHub target: `DerpyNewb/lead-crm-automation`. The user selected HubSpot, authorized brainstorming, planning, and implementation, and requested publication to GitHub on 2026-10-13.
 
 Implemented: Python standard-library intake/evidence validation, SQLite-backed approvals and operation receipts, demo/live mode separation, HubSpot contact/task adapters, Gemini supplied-source assessment, Instantly enrollment/blocklist adapters, authenticated loopback API/CLI, four inactive n8n exports, fictional fixtures, asserted offline demonstration, setup instructions, and colleague SOP.
 
