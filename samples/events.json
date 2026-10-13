@@ -1,0 +1,4 @@
+[
+  {"event_type": "reply_received", "lead_email": "alex@northwind.example", "workspace": "demo-workspace", "campaign_id": "demo-campaign", "campaign_name": "Fictional Property Management", "timestamp": "2026-09-30T10:00:00Z", "reply_text": "Please share the management service details."},
+  {"event_type": "lead_unsubscribed", "lead_email": "sam@contoso.example", "workspace": "demo-workspace", "campaign_id": "demo-campaign", "campaign_name": "Fictional Property Management", "timestamp": "2026-09-30T10:30:00Z"}
+]

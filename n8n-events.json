@@ -1,0 +1,24 @@
+{
+  "id": "leadCrmEvents001",
+  "name": "Instantly events to local engine",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {"httpMethod": "POST", "path": "instantly-events", "authentication": "headerAuth", "responseMode": "responseNode", "options": {}},
+      "id": "events-webhook", "webhookId": "1fc91dbf-13a0-4dcc-b881-22228c12d003", "name": "Events Webhook", "type": "n8n-nodes-base.webhook", "typeVersion": 2, "position": [0, 0],
+      "notes": "Select a Header Auth credential matching the shared secret header configured in Instantly. n8n and the engine must share the same host network."
+    },
+    {
+      "parameters": {"method": "POST", "url": "http://127.0.0.1:8765/events", "authentication": "genericCredentialType", "genericAuthType": "httpHeaderAuth", "sendBody": true, "contentType": "json", "specifyBody": "json", "jsonBody": "={{ JSON.stringify($json.body) }}", "options": {"timeout": 120000, "redirect": {"redirect": {"followRedirects": false}}, "response": {"response": {"fullResponse": true, "neverError": true, "responseFormat": "json"}}}},
+      "id": "events-engine", "name": "Call Engine", "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2, "position": [260, 0],
+      "notes": "Select a Header Auth credential: Authorization = Bearer <ENGINE_API_TOKEN>. Forward the actual provider body; normalization belongs to the engine."
+    },
+    {
+      "parameters": {"respondWith": "json", "responseBody": "={{ $json.body }}", "options": {"responseCode": "={{ $json.statusCode }}"}},
+      "id": "events-response", "name": "Engine Response", "type": "n8n-nodes-base.respondToWebhook", "typeVersion": 1.4, "position": [520, 0]
+    }
+  ],
+  "connections": {"Events Webhook": {"main": [[{"node": "Call Engine", "type": "main", "index": 0}]]}, "Call Engine": {"main": [[{"node": "Engine Response", "type": "main", "index": 0}]]}},
+  "settings": {"executionOrder": "v1", "saveDataErrorExecution": "none", "saveDataSuccessExecution": "none", "saveManualExecutions": false, "saveExecutionProgress": false},
+  "pinData": {}
+}

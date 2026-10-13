@@ -1,0 +1,18 @@
+[
+  {
+    "email": "alex@northwind.example",
+    "company": "Northwind Property Holdings (fictional)",
+    "first_name": "Alex",
+    "last_name": "Example",
+    "sources": [{"id": "company-brief", "url": "https://northwind.example/brief", "observed_at": "2026-09-30T08:00:00Z", "text": "Northwind owns twelve rental properties in Baguio. We are seeking a property management partner for maintenance and leasing."}],
+    "assessment": {"fit": "high", "intent": "explicit_request", "summary": "Fictional owner with a stated request for maintenance and leasing management.", "evidence": [{"source_id": "company-brief", "quote": "We are seeking a property management partner for maintenance and leasing."}]}
+  },
+  {
+    "email": "sam@contoso.example",
+    "company": "Contoso Rentals (fictional)",
+    "first_name": "Sam",
+    "last_name": "Example",
+    "sources": [{"id": "expansion-brief", "url": "https://contoso.example/brief", "observed_at": "2026-09-30T08:00:00Z", "text": "Contoso is expanding its rental portfolio with five additional properties this year. No request for management services is stated."}],
+    "assessment": {"fit": "medium", "intent": "expansion", "summary": "Portfolio growth is a signal to research; a service purchase is not confirmed.", "evidence": [{"source_id": "expansion-brief", "quote": "Contoso is expanding its rental portfolio with five additional properties this year."}]}
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "id": "leadCrmDispatch001",
+  "name": "Manually dispatch local durable queue",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {}, "id": "dispatch-trigger", "name": "Manual Dispatch", "type": "n8n-nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0],
+      "notes": "Run only after reviewing pending operations. This wrapper assumes n8n and the engine share the same host network."
+    },
+    {
+      "parameters": {"method": "POST", "url": "http://127.0.0.1:8765/dispatch", "authentication": "genericCredentialType", "genericAuthType": "httpHeaderAuth", "sendBody": true, "contentType": "json", "specifyBody": "json", "jsonBody": "{}", "options": {"timeout": 120000, "redirect": {"redirect": {"followRedirects": false}}, "response": {"response": {"fullResponse": true, "neverError": true, "responseFormat": "json"}}}},
+      "id": "dispatch-engine", "name": "Call Engine", "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2, "position": [260, 0],
+      "notes": "Select a Header Auth credential: Authorization = Bearer <ENGINE_API_TOKEN>. Inspect returned statusCode and body; uncertain writes require reconciliation."
+    }
+  ],
+  "connections": {"Manual Dispatch": {"main": [[{"node": "Call Engine", "type": "main", "index": 0}]]}},
+  "settings": {"executionOrder": "v1", "saveDataErrorExecution": "none", "saveDataSuccessExecution": "none", "saveManualExecutions": false, "saveExecutionProgress": false},
+  "pinData": {}
+}

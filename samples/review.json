@@ -1,0 +1,9 @@
+{
+  "email": "alex@northwind.example",
+  "decision": "approve",
+  "reviewer": "Demo Reviewer",
+  "owner_id": "101",
+  "note": "Fictional source and contact checked for the offline demonstration.",
+  "contact_verified": true,
+  "campaign_id": "demo-campaign"
+}

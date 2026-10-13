@@ -1,0 +1,12 @@
+{
+  "records": [
+    {
+      "email": "alex@northwind.example",
+      "company": "Northwind Property Holdings (fictional)",
+      "first_name": "Alex",
+      "last_name": "Example",
+      "sources": [{"id": "company-brief", "url": "https://northwind.example/brief", "observed_at": "2026-09-30T08:00:00Z", "text": "Northwind owns twelve rental properties in Baguio. We are seeking a property management partner for maintenance and leasing."}],
+      "assessment": {"fit": "high", "intent": "explicit_request", "summary": "Fictional owner with a stated request for maintenance and leasing management.", "evidence": [{"source_id": "company-brief", "quote": "We are seeking a property management partner for maintenance and leasing."}]}
+    }
+  ]
+}

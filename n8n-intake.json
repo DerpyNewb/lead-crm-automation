@@ -1,0 +1,24 @@
+{
+  "id": "leadCrmIntake001",
+  "name": "Lead intake to local engine",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {"httpMethod": "POST", "path": "lead-intake", "authentication": "headerAuth", "responseMode": "responseNode", "options": {}},
+      "id": "intake-webhook", "webhookId": "1fc91dbf-13a0-4dcc-b881-22228c12d001", "name": "Intake Webhook", "type": "n8n-nodes-base.webhook", "typeVersion": 2, "position": [0, 0],
+      "notes": "Select an inbound Header Auth credential before activation. This wrapper assumes n8n and the engine share the same host network."
+    },
+    {
+      "parameters": {"method": "POST", "url": "http://127.0.0.1:8765/ingest", "authentication": "genericCredentialType", "genericAuthType": "httpHeaderAuth", "sendBody": true, "contentType": "json", "specifyBody": "json", "jsonBody": "={{ JSON.stringify($json.body) }}", "options": {"timeout": 120000, "redirect": {"redirect": {"followRedirects": false}}, "response": {"response": {"fullResponse": true, "neverError": true, "responseFormat": "json"}}}},
+      "id": "intake-engine", "name": "Call Engine", "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2, "position": [260, 0],
+      "notes": "Select a Header Auth credential: Authorization = Bearer <ENGINE_API_TOKEN>. Credential bindings are intentionally omitted."
+    },
+    {
+      "parameters": {"respondWith": "json", "responseBody": "={{ $json.body }}", "options": {"responseCode": "={{ $json.statusCode }}"}},
+      "id": "intake-response", "name": "Engine Response", "type": "n8n-nodes-base.respondToWebhook", "typeVersion": 1.4, "position": [520, 0]
+    }
+  ],
+  "connections": {"Intake Webhook": {"main": [[{"node": "Call Engine", "type": "main", "index": 0}]]}, "Call Engine": {"main": [[{"node": "Engine Response", "type": "main", "index": 0}]]}},
+  "settings": {"executionOrder": "v1", "saveDataErrorExecution": "none", "saveDataSuccessExecution": "none", "saveManualExecutions": false, "saveExecutionProgress": false},
+  "pinData": {}
+}
